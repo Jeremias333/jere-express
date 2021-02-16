@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const conn = require("./database/database");
 const categoriesRouter = require("./categories/CategoriesController");
-const articlesRouter = require("./articles/ArticleController");
+const articlesRouter = require("./articles/ArticlesController");
 
 const all_routes = require('express-list-endpoints');
 
