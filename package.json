@@ -1,0 +1,27 @@
+{
+  "name": "jere-express",
+  "version": "1.0.0",
+  "description": "Blog desenvolvido durante o curso de formação NodeJS.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeremias333/jere-express.git"
+  },
+  "author": "Jeremias Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeremias333/jere-express/issues"
+  },
+  "homepage": "https://github.com/Jeremias333/jere-express#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  }
+}
