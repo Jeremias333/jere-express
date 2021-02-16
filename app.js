@@ -2,6 +2,12 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const conn = require("./database/database");
+const categoriesRouter = require("./categories/CategoriesController");
+const articlesRouter = require("./articles/ArticleController");
+
+const all_routes = require('express-list-endpoints');
+
+
 require("dotenv/config");
 
 const port = parseInt(process.env.PORT) || 80;
@@ -26,6 +32,10 @@ app.get("/", (req, res) => {
 	// res.send("Bem vindo ao site");
 });
 
+app.use("/categories", categoriesRouter);
+app.use("/articles", articlesRouter);
+
+console.log(all_routes(app));
 app.listen(port, () => {
 	console.log("servidor rodando na porta "+ port);
 });
