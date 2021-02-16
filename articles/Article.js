@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const conn = require("../database/database");
 
-const Category = conn.define("categories", {
+const Article = conn.define("articles", {
 	tite:{
 		type: Sequelize.STRING,
 		allowNull: false
@@ -9,7 +9,11 @@ const Category = conn.define("categories", {
 	slug: {
 		type: Sequelize.STRING,
 		allowNull: false
+	},
+	body: {
+		type: Sequelize.TEXT,
+		allowNull: false
 	}
 });
 
-module.exports = Category;
+module.exports = Article;
