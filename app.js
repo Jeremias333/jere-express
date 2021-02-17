@@ -2,10 +2,17 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const conn = require("./database/database");
+
+//controllers
 const categoriesRouter = require("./categories/CategoriesController");
 const articlesRouter = require("./articles/ArticlesController");
 
-const all_routes = require('express-list-endpoints');
+//models
+const Article = require("./articles/Article");
+const Category = require("./categories/Category");
+
+
+// const all_routes = require('express-list-endpoints'); //para visualizar endpoints
 
 
 require("dotenv/config");
@@ -35,7 +42,8 @@ app.get("/", (req, res) => {
 app.use("/categories", categoriesRouter);
 app.use("/articles", articlesRouter);
 
-console.log(all_routes(app));
+// console.log(all_routes(app)); //printando todos endpoints
+
 app.listen(port, () => {
 	console.log("servidor rodando na porta "+ port);
 });

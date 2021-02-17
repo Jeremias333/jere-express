@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const conn = require("../database/database");
 
 const Category = conn.define("categories", {
-	tite:{
+	title:{
 		type: Sequelize.STRING,
 		allowNull: false
 	},
@@ -11,5 +11,7 @@ const Category = conn.define("categories", {
 		allowNull: false
 	}
 });
+
+// Category.sync({force:true}); //para syncronizar as tabelas.
 
 module.exports = Category;
