@@ -2,8 +2,11 @@
 <%- include("../../partials/navbar.ejs") %>
 <body>
 	<div class="container">
+		<br>
 		<h2>Categorias</h2>
 		<br>
+		<a class="btn btn-success" href="/categories/admin/new">Adicionar Nova Categoria</a> 
+		<hr>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -20,12 +23,17 @@
 						<th><%= category.id %></th>
 						<th><%= category.title %></th>
 						<th><%= category.slug %></th>
-						<th><a class="btn btn-success">Editar</a><a class="btn btn-danger">Deletar</a></th>
+						<th>
+							<a class="btn btn-success">Editar</a>
+
+
+							<a class="btn btn-danger">Deletar</a>
+						</th>
 					</tr>
 					<% }); %>
 				</tbody>
 			<% }else{ %>
-				<h2>Não existem categorias cadastrados</h2>
+				<h2>Não existem categorias cadastradas</h2>
 			<%}%>
 		</table>
 	</div>
