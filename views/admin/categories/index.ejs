@@ -13,14 +13,20 @@
 					<th>Ações</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</tbody>
+			<% if(categories != undefined){ %>
+				<tbody>
+					<% categories.forEach(category => { %>
+					<tr>
+						<th><%= category.id %></th>
+						<th><%= category.title %></th>
+						<th><%= category.slug %></th>
+						<th><a class="btn btn-success">Editar</a><a class="btn btn-danger">Deletar</a></th>
+					</tr>
+					<% }); %>
+				</tbody>
+			<% }else{ %>
+				<h2>Não existem categorias cadastrados</h2>
+			<%}%>
 		</table>
 	</div>
 </body>
