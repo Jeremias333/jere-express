@@ -11,6 +11,10 @@ router.get("/admin/new", (req, res) => {
 	res.render("admin/categories/new");
 });
 
+router.get("/admin", (req, res) => {
+	res.render("admin/categories/index");
+});
+
 router.post("/save", (req, res) => {
 	var title = req.body.title;
 
