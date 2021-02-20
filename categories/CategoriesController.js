@@ -25,10 +25,30 @@ router.post("/save", (req, res) => {
 			title: title,
 			slug: slugify(title.toLowerCase())
 		}).then(() => {
-			res.redirect("/");
+			res.redirect("/categories/admin");
 		});
 	}else{
 		res.redirect("/categories/admin/new");
+	}
+});
+
+router.post("/delete", (req, res) => {
+	var id = req.body.id;
+
+	if(id != undefined){
+		if(!isNaN(id)){
+			Category.destroy({
+				where:{
+					id: id
+				}
+			}).then(() => {
+				res.redirect("/categories/admin");
+			});
+		}else{
+			res.redirect("/categories/admin");
+		}
+	}else{
+		res.redirect("/categories/admin");
 	}
 });
 
