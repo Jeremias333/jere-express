@@ -11,7 +11,7 @@
 				<form method="POST" action="/categories/save">
 					<input type="text" name="title" class="form-control" placeholder="Defina o título do artigo">
 					<br>
-					<textarea class="form-control" placeholder="Digite seu artigo aqui" name="body"></textarea><br>
+					<textarea id="article" class="form-control" placeholder="Digite seu artigo aqui" name="body"></textarea><br>
 					<button class="btn-success form-control">Submeter</button>
 				</form>
 			</div>
@@ -19,3 +19,13 @@
 	</div>
 </body>
 <%- include("../../partials/footer.ejs") %>
+<script type="text/javascript" src="/tinymce-1/tinymce.min.js"></script>
+<script type="text/javascript">
+	tinymce.init({
+		selector: "#article",
+		plugins: [
+		'advlist autolink link image lists print hr searchreplace wordcount fullscreen isertdatetime media save table paste emoticons'
+		]	
+	});
+
+</script>
