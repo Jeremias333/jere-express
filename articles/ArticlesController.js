@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/admin", (req, res) => {
-	res.send("administrador artigos");
+	res.render("admin/articles/new");
 });
 
 module.exports = router;
