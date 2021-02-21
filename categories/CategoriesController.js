@@ -52,4 +52,37 @@ router.post("/delete", (req, res) => {
 	}
 });
 
+router.get("/admin/edit/:id", (req, res) => {
+	var id = req.params.id;
+	
+	if(isNaN(id)){			
+		res.redirect("/categories/admin");
+	}
+
+	Category.findByPk(id).then(category => {
+		if(category != undefined){
+			res.render("admin/categories/edit", {category: category});
+		}else{
+			res.redirect("/categories/admin");
+		}
+	}).catch(err => {
+		console.log(err)
+		res.redirect("/categories/admin");
+	});
+	
+});
+
+router.post("/update", (req, res) => {
+	var id = req.body.id;
+	var title = req.body.title;
+
+	Category.update({title: title, slug: slugify(title.toLowerCase())}, {
+		where: {
+			id:id
+		}
+	}).then(() => {
+		res.redirect("/categories/admin")
+	});
+});
+
 module.exports = router;

@@ -24,11 +24,8 @@
 						<th><%= category.title %></th>
 						<th><%= category.slug %></th>
 						<th class="text-center">
-							<form style="display: inline" method="post" action="/categories/edit">
-								<input type="hidden" name="id" value="<%= category.id %>">
-								<button class="btn btn-success">Editar</button>
-							</form>
-
+							<a href="/categories/admin/edit/<%= category.id %>" class="btn btn-success">Editar</a>
+							
 							<form method="post" action="/categories/delete" style="display: inline" onsubmit="confirmDelete(event, this)">
 								<input type="hidden" name="id" value="<%= category.id %>">
 								<button class="btn btn-danger">Deletar</button>
