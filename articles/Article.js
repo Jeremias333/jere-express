@@ -3,7 +3,7 @@ const conn = require("../database/database");
 const Category = require("../categories/Category");
 
 const Article = conn.define("articles", {
-	tite:{
+	title:{
 		type: Sequelize.STRING,
 		allowNull: false
 	},

@@ -1,0 +1,56 @@
+<%- include("../../partials/header.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+<body>
+	<div class="container">
+		<br>
+		<h2>Artigos</h2>
+		<br>
+		<a class="btn btn-success" href="/articles/admin/new">Adicionar novo artigo</a> 
+		<hr>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="text-center">ID</th>
+					<th class="text-center">Titulo</th>
+					<th class="text-center">Slug</th>
+					<th class="text-center">Categoria</th>
+					<th class="text-center">Ações</th>
+				</tr>
+			</thead>
+			<% if(articles != undefined){ %>
+				<tbody>
+					<% articles.forEach(articles => { %>
+					<tr>
+						<td><%= articles.id %></td>
+						<td><%= articles.title %></td>
+						<td><%= articles.slug %></td>
+						<td><%= articles.category.title %></td>
+						<td class="text-center">
+							<a href="/articles/admin/edit/<%= articles.id %>" class="btn btn-success">Editar</a>
+							
+							<form method="post" action="/articles/delete" style="display: inline" onsubmit="confirmDelete(event, this)">
+								<input type="hidden" name="id" value="<%= articles.id %>">
+								<button class="btn btn-danger">Deletar</button>
+							</form>
+						</td>
+					</tr>
+					<% }); %>
+				</tbody>
+			<% }else{ %>
+				<h2>Não existem categorias cadastradas</h2>
+			<%}%>
+		</table>
+	</div>
+</body>
+<%- include("../../partials/footer.ejs") %>
+<script type="text/javascript">
+	function confirmDelete(event, form) {
+		event.preventDefault(); //evita que o formulário seja enviado.
+
+		var result = confirm("Realmente deseja deletar esta categorias?");
+
+		if(result){
+			form.submit();
+		}
+	}
+</script>

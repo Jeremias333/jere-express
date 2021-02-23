@@ -4,11 +4,15 @@ const Category = require("../categories/Category");
 const Article = require("./Article");
 const slugify = require("slugify");
 
-router.get("/", (req, res) => {
-	res.send("Rota de artigos");
+router.get("/admin", (req, res) => {
+	Article.findAll({
+		include: [{model: Category}] //join com sequelize
+	}).then(articles => {
+		res.render("admin/articles/index", {articles: articles});
+	});
 });
 
-router.get("/admin", (req, res) => {
+router.get("/admin/new", (req, res) => {
 
 	Category.findAll().then(categories => {
 		res.render("admin/articles/new", {categories: categories});
@@ -26,6 +30,8 @@ router.post("/save", (req, res) => {
 		slug: slugify(title.toLowerCase()),
 		body: body,
 		categoryId: categoryId
+	}).then(() => {
+		res.redirect("/articles/admin");
 	});
 });
 
