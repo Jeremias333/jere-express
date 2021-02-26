@@ -43,6 +43,24 @@ app.get("/", (req, res) => {
 	// res.send("Bem vindo ao site");
 });
 
+app.get("/:slug", (req, res) => {
+	var slug = req.params.slug;
+	Article.findOne({
+		where: {
+			slug: slug
+		}
+	}).then(article => {
+		if(article != undefined){
+			res.render("article", {article: article});
+		}else{
+			res.redirect("/");
+		}
+	}).catch(error => {
+		res.redirect("/");
+		console.log(error);
+	})
+});
+
 app.use("/categories", categoriesRouter);
 app.use("/articles", articlesRouter);
 
