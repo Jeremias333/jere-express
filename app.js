@@ -36,7 +36,9 @@ conn.authenticate()
 
 app.get("/", (req, res) => {
 
-	Article.findAll().then(articles => {
+	Article.findAll({order: [
+		['id']
+		]}).then(articles => {
 		res.render("index", {articles: articles});
 	});
 	
