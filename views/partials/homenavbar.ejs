@@ -7,5 +7,17 @@
 		<li class="nav-item">
 			<a class="nav-link" style="color: white" href="/categories/admin">Lista de categorias</a>
 		</li>
+		<li class="nav-item dropdown" id="lili">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+				Categorias
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				<% categories.forEach(category => { %>
+					<!--  -->
+					<a class="dropdown-item" href="/<%= category.slug %>"><%= category.title %> </a>
+				<% }); %>
+			</div>
+		</li>
+		
 	</ul>
 </nav>
