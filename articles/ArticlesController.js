@@ -91,7 +91,6 @@ router.post("/update", (req, res) => {
 	}, {where: {id: id}}).then(() => {
 		res.redirect("/articles/admin")
 	});
-
 });
 
 module.exports = router;
