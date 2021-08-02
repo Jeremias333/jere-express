@@ -49,6 +49,26 @@ app.get("/", (req, res) => {
 	// res.send("Bem vindo ao site");
 });
 
+app.get("/category/:slug", (req, res) => {
+	var slug = req.params.slug;
+	Category.findOne({
+		where:{
+			slug:slug
+		},
+		include: [{model: Article}]
+	}).then(category => {
+		if(category != undefined){
+			Category.findAll().then(categories => {
+				res.render("index", {articles: category.articles, categories: categories});
+			});
+		}else{
+			res.redirect("/")
+		}
+	}).catch(err => {
+		res.redirect("/")
+	});
+});
+
 app.get("/:slug", (req, res) => {
 	var slug = req.params.slug;
 	Article.findOne({
