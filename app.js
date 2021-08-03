@@ -6,10 +6,12 @@ const conn = require("./database/database");
 //controllers
 const categoriesRouter = require("./categories/CategoriesController");
 const articlesRouter = require("./articles/ArticlesController");
+const usersRouter = require("./user/UserController");
 
 //models
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
+const User = require("./user/User");
 
 
 // const all_routes = require('express-list-endpoints'); //para visualizar endpoints
@@ -92,6 +94,7 @@ app.get("/:slug", (req, res) => {
 
 app.use("/categories", categoriesRouter);
 app.use("/articles", articlesRouter);
+app.use("/users", usersRouter);
 
 // console.log(all_routes(app)); //printando todos endpoints
 
